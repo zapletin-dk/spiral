@@ -2,20 +2,21 @@ package com.epam.rd.autotasks;
 
 class Spiral {
     static int[][] spiral(int rows, int columns) {
-        int [][]spir = new int[rows][columns];
+        int[][] spiralMatrix = new int[rows][columns];
         int value = 1;
-        int minCol = 0;
-        int maxCol = columns-1;
+        int minColumn = 0;
+        int maxColumn = columns-1;
         int minRow = 0;
         int maxRow = rows-1;
+
         outer:while (value <= rows*columns)
         {
-            for (int i = minCol; i <= maxCol; i++)
+            for (int i = minColumn; i <= maxColumn; i++)
             {
                 if (value > rows*columns){
                     break outer;
                 }
-                spir[minRow][i] = value;
+                spiralMatrix[minRow][i] = value;
                 value++;
             }
 
@@ -24,16 +25,16 @@ class Spiral {
                 if (value > rows*columns){
                     break outer;
                 }
-                spir[i][maxCol] = value;
+                spiralMatrix[i][maxColumn] = value;
                 value++;
             }
 
-            for (int i = maxCol-1; i >= minCol; i--)
+            for (int i = maxColumn-1; i >= minColumn; i--)
             {
                 if (value > rows*columns){
                     break outer;
                 }
-                spir[maxRow][i] = value;
+                spiralMatrix[maxRow][i] = value;
                 value++;
             }
 
@@ -42,14 +43,14 @@ class Spiral {
                 if (value > rows*columns){
                     break outer;
                 }
-                spir[i][minCol] = value;
+                spiralMatrix[i][minColumn] = value;
                 value++;
             }
-            minCol++;
+            minColumn++;
             minRow++;
-            maxCol--;
+            maxColumn--;
             maxRow--;
         }
-        return spir;
+        return spiralMatrix;
     }
 }
